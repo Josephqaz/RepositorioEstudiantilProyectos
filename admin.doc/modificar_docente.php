@@ -5,12 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $docente_id = $conn->real_escape_string($_POST['docente_id']);
     $nombre = $conn->real_escape_string($_POST['nombre']);
     $cargo = isset($_POST['cargo']) ? $conn->real_escape_string($_POST['cargo']) : '';
-    $formacion_academica = isset($_POST['formacion_academica']) ? $conn->real_escape_string($_POST['formacion_academica']) : '';
+    $formacion_academica = $conn->real_escape_string($_POST['formacion_academica']);
     $email = isset($_POST['email']) ? $conn->real_escape_string($_POST['email']) : '';
     $imagen = '';
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $directorio = '../scr/doc/';
+        $directorio = '../scr/docen/';
         if (!is_dir($directorio)) {
             mkdir($directorio, 0777, true);
         }
@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($conn->query($sql) === TRUE) {
         echo "Docente modificado exitosamente.";
+        header('Location: ../templates/docentes_investigadores.php');
     } else {
         echo "Error al modificar el docente: " . $conn->error;
     }

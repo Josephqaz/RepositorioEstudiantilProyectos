@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagen = '';
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $directorio = '../scr/doc/';
+        $directorio = '../scr/semi/';
         if (!is_dir($directorio)) {
             mkdir($directorio, 0777, true);
         }

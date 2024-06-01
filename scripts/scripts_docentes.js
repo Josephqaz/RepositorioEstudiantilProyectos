@@ -20,7 +20,7 @@ $(document).ready(function() {
                 </div>
                 <div class="mb-3">
                     <label for="formacion_academica" class="form-label">Formación Académica</label>
-                    <input type="text" class="form-control" id="formacion_academica" name="formacion_academica">
+                    <textarea class="form-control" id="formacion_academica" name="formacion_academica" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>

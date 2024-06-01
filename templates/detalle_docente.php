@@ -7,18 +7,6 @@ $sql = "SELECT * FROM docentes WHERE docente_id = $docente_id";
 $result = $conn->query($sql);
 $docente = $result->fetch_assoc();
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detalle Docente - Repositorio ETITC</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/repositorio.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</head>
 <body>
     <div class="container mt-5 container-detalle">
         <h2><?php echo $docente['nombre']; ?></h2>
@@ -31,8 +19,15 @@ $docente = $result->fetch_assoc();
                     <h5 class="card-title"><?php echo $docente['nombre']; ?></h5>
                     <p class="card-text"><strong>Cargo:</strong> <?php echo $docente['cargo']; ?></p>
                     <p class="card-text"><strong>Correo:</strong> <a href="mailto:<?php echo $docente['email']; ?>"><?php echo $docente['email']; ?></a></p>
-                    <h3>Biografía</h3>
-                    <p>Breve biografía del docente...</p>
+                    <h3>Formación Académica</h3>
+                    <?php
+                    $docente_id = $docente['docente_id'];
+                    $sqlFormacion = "SELECT formacion_academica FROM docentes WHERE docente_id = $docente_id";
+                    $resultFormacion = $conn->query($sqlFormacion);
+                    if ($rowFormacion = $resultFormacion->fetch_assoc()) {
+                        echo '<p>' . $rowFormacion['formacion_academica'] . '</p>';
+                    }
+                    ?>
                     <h3>Proyectos en los que participa</h3>
                     <ul>
                         <?php

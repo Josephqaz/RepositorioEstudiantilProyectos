@@ -4,12 +4,12 @@ include("../includes/db.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $conn->real_escape_string($_POST['nombre']);
     $cargo = isset($_POST['cargo']) ? $conn->real_escape_string($_POST['cargo']) : '';
-    $formacion_academica = isset($_POST['formacion_academica']) ? $conn->real_escape_string($_POST['formacion_academica']) : '';
+    $formacion_academica = $conn->real_escape_string($_POST['formacion_academica']);
     $email = isset($_POST['email']) ? $conn->real_escape_string($_POST['email']) : '';
     $imagen = '';
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $directorio = '../scr/doc/';
+        $directorio = '../scr/docen/';
         if (!is_dir($directorio)) {
             mkdir($directorio, 0777, true);
         }
@@ -24,8 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO docentes (nombre, cargo, formacion_academica, email, imagen) VALUES ('$nombre', '$cargo', '$formacion_academica', '$email', '$imagen')";
     if ($conn->query($sql) === TRUE) {
         echo "Docente creado exitosamente.";
+        header('Location: ../templates/docentes_investigadores.php');
+        exit;
     } else {
-        echo "Error al crear el docente: " . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+$conn->close();
 ?>
