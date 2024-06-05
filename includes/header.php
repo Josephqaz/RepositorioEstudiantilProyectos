@@ -91,6 +91,7 @@ session_start();
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Entrar</button>
+                        <button type="submit" class="btn btn-secondary">Registrarse</button>
                     </form>
                 </div>
             </div>

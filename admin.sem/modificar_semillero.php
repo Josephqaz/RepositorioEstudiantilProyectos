@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($conn->query($sql) === TRUE) {
         echo "Semillero modificado exitosamente.";
+        header('Location: ../templates/semilleros.php');
     } else {
         echo "Error al modificar el semillero: " . $conn->error;
     }

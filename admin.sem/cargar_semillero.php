@@ -11,5 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Devolver los datos como JSON
     echo json_encode($semillero);
+    
 }
 ?>

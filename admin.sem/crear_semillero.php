@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO semilleros (nombre, descripcion, contacto_email, imagen) VALUES ('$nombre', '$descripcion', '$contacto_email', '$imagen')";
     if ($conn->query($sql) === TRUE) {
         echo "Semillero creado exitosamente.";
+        header('Location: ../templates/semilleros.php');
     } else {
         echo "Error al crear el semillero: " . $conn->error;
     }
