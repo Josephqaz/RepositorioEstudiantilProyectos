@@ -13,7 +13,7 @@ body {
     /* Fuente similar a la utilizada en la imagen */
 }
 
-.navbar-custom {
+.navbar {
     background-color: #2e4562;
     /* Un gris oscuro similar al de la imagen */
     color: black;
@@ -56,6 +56,15 @@ body {
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     /* Sombra sutil para los contenedores */
+}
+
+.main-content-index {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    width: 200%; /* Ajusta este valor según sea necesario */
 }
 
 h1,

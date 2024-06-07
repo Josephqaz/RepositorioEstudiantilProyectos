@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Manejo de la imagen
     $imagen = '';
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $imagen = '../scr/proy/' . basename($_FILES['imagen']['name']);
+        $imagen = '../scr/doc/' . basename($_FILES['imagen']['name']);
         move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen);
     }
 

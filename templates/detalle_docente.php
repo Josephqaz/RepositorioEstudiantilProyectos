@@ -7,6 +7,7 @@ $sql = "SELECT * FROM docentes WHERE docente_id = $docente_id";
 $result = $conn->query($sql);
 $docente = $result->fetch_assoc();
 ?>
+
 <body>
     <div class="container mt-5 container-detalle">
         <h2><?php echo $docente['nombre']; ?></h2>
@@ -32,10 +33,10 @@ $docente = $result->fetch_assoc();
                     <ul>
                         <?php
                         $sqlProyectos = "SELECT proyectos.nombre FROM proyectos
-                                         JOIN docentes_proyectos ON proyectos.proyecto_id = docentes_proyectos.proyecto_id
-                                         WHERE docentes_proyectos.docente_id = $docente_id";
+                                        JOIN proyecto_docentes ON proyectos.proyecto_id = proyecto_docentes.proyecto_id
+                                        WHERE proyecto_docentes.docente_id = $docente_id";
                         $resultProyectos = $conn->query($sqlProyectos);
-                        while($rowProyecto = $resultProyectos->fetch_assoc()) {
+                        while ($rowProyecto = $resultProyectos->fetch_assoc()) {
                             echo '<li>' . $rowProyecto['nombre'] . '</li>';
                         }
                         ?>
@@ -46,5 +47,6 @@ $docente = $result->fetch_assoc();
     </div>
 </body>
 <?php include("../includes/footer.php") ?>
+
 </html>
 <?php $conn->close(); ?>
